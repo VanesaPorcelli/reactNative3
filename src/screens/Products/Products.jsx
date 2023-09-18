@@ -6,24 +6,23 @@ import allProducts from "../../data/products";
 
 import styles from "./Products.style";
 
-const Products = ({ category }) => {
+const Products = ({ category, setProductSelected }) => {
   const [arrProducts, setArrProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
-  
 
   useEffect(() => {
     if (category) {
       const products = allProducts.filter(
-        product => product.category === category
+        (product) => product.category === category
       );
-    
-      const productsFiltered = products.filter(product =>
+
+      const productsFiltered = products.filter((product) =>
         product.title.includes(keyword)
       );
 
       setArrProducts(productsFiltered);
     } else {
-      const productsFiltered = allProducts.filter(product =>
+      const productsFiltered = allProducts.filter((product) =>
         product.title.includes(keyword)
       );
       setArrProducts(productsFiltered);
@@ -38,9 +37,9 @@ const Products = ({ category }) => {
         <FlatList
           data={arrProducts}
           renderItem={({ item }) => (
-            <View>
+            <TouchableOpacity onPress={() => setProductSelected(item)}>
               <Text>{item.title}</Text>
-            </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />

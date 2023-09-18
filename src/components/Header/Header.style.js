@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop:20,
+        paddingTop: 20,
     }
     ,
     text: {
