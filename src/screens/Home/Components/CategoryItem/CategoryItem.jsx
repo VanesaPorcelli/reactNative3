@@ -1,14 +1,16 @@
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text,View } from "react-native";
 import { Card } from "../../../../components";
 import styles from "./CategoryItem.style";
 
-const CategoryItem = ({ category, setCategorySelected }) => {
+const CategoryItem = ({ category, navigation }) => {
   return (
-    <Pressable onPress={() => setCategorySelected(category)}>
-      <Card style={styles.cardContainer}>
-        <Text style={styles.text}>{category.title}</Text>
-      </Card>
+    <Pressable onPress={() =>navigation.navigate('Products')}
+    style={styles.container}
+    >
+      <View style={styles.cardContainer}>
+        <Text style={styles.text}>{category}</Text>
+      </View>
     </Pressable>
   );
 };

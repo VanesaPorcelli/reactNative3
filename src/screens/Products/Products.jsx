@@ -1,25 +1,29 @@
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
-import { Header, SearchInput } from "../../components";
+import { SearchInput } from "../../components";
 import allProducts from "../../data/products";
-
 import styles from "./Products.style";
 
-const Products = ({ category, setProductSelected }) => {
+const Products = ({ navigation, route }) => {
   const [arrProducts, setArrProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    if (category) {
+    if (route.params && route.params.category) {
       const products = allProducts.filter(
-        (product) => product.category === category
+        (product) => product.category === route.params.category
       );
-
       const productsFiltered = products.filter((product) =>
         product.title.includes(keyword)
       );
-
       setArrProducts(productsFiltered);
     } else {
       const productsFiltered = allProducts.filter((product) =>
@@ -27,24 +31,35 @@ const Products = ({ category, setProductSelected }) => {
       );
       setArrProducts(productsFiltered);
     }
-  }, [category, keyword]);
+  }, [route.params, keyword]);
 
   return (
-    <View style={styles.container}>
-      <Header title={category} />
+    <SafeAreaView style={styles.container}>
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         <FlatList
           data={arrProducts}
+          numColumns={2}
+          columnWrapperStyle={styles.weapperStyle}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setProductSelected(item)}>
-              <Text>{item.title}</Text>
+            <TouchableOpacity
+              style={styles.productContainer}
+              onPress={() => navigation.navigate("Details", { product: item })}
+            >
+              <Image
+                style={styles.image}
+                source={{
+                  uri: item.images[0],
+                }}
+              />
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.price}>{`$${item.price.toFixed(2)}`}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

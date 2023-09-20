@@ -1,18 +1,20 @@
- import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  image: {
+  imageContainer: {
     height: '50%',
-    width: '90%',
+    width: '100%',
+  },
+  image: {
+    height: '100%',
   },
   title: {
     fontSize: 30,
-    marginVertical: 15,
-    fontFamily: 'PoppinsThinItalic',
+    fontWeight: 'bold',
   },
   price: {
     fontSize: 20,

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { Pressable, TextInput, View } from "react-native";
+import React, { useState } from "react";
 
 import AntDesign from "@expo/vector-icons/AntDesign";
 import styles from "./SearchInput.style";
@@ -12,7 +12,7 @@ const SearchInput = ({ onSearch }) => {
   };
 
   const clearInput = () => {
-    setValue(""); 
+    setValue("");
     onSearch("");
   };
 
@@ -22,14 +22,15 @@ const SearchInput = ({ onSearch }) => {
         style={styles.input}
         value={value}
         onChangeText={setValue}
-        placeholder="Search product"
+        placeholder="Search"
       />
-      <Pressable onPress={search}>
-        <AntDesign name="search1" size={25} color={"black"} />
-      </Pressable>
-      <Pressable onPress={clearInput}>
-        <AntDesign name="closecircleo" size={25} color={"black"} />
-      </Pressable>
+      <AntDesign name="search1" size={25} color={"black"} onPress={search} />
+      <AntDesign
+        name="closecircleo"
+        size={25}
+        color={"black"}
+        onPress={clearInput}
+      />
     </View>
   );
 };
