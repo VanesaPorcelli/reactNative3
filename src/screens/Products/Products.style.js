@@ -4,25 +4,29 @@ import { colors } from '../../constants/colors'
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.white,
     },
     listContainer: {
         flex: 1,
         marginTop: 15,
         paddingHorizontal: 15,
     },
-    weapperStyle: {
+    wrapperStyle: {
         justifyContent: 'space-between',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
     productContainer: {
-        width: '47%',
-        backgroundColor: colors.primary,
+        width: '48%',
+        backgroundColor: colors.grey,
         marginBottom: 20,
-        alignItems: 'flex-start',
+        alignItems: 'center',
         paddingVertical: 15,
         paddingHorizontal: 10,
         borderRadius: 15,
-        gap: 10,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+        margin: 5,
     },
     image: {
         alignSelf: 'center',
@@ -30,11 +34,16 @@ export default styles = StyleSheet.create({
         width: 150,
     },
     title: {
-        fontWeight: '700',
+        fontWeight: '600',
         fontVariant: 'small-caps',
+        fontSize: 16,
+        textAlign: 'center',
+        marginVertical: 10,
     },
     price: {
-        fontSize: 20,
-        fontVariant: '',
+        fontSize: 18,
+        fontVariant: 'small-caps',
+        textAlign: 'center',
+        marginBottom: 10,
     },
 })

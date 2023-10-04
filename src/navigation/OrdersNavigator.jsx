@@ -1,7 +1,7 @@
-import { Orders } from '../screens'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Orders } from "../screens";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 function OrdersNavigator() {
   return (
@@ -13,7 +13,7 @@ function OrdersNavigator() {
     >
       <Stack.Screen name="Orders" component={Orders} />
     </Stack.Navigator>
-  )
+  );
 }
 
-export default OrdersNavigator
+export default OrdersNavigator;

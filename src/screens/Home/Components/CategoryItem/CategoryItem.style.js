@@ -1,30 +1,28 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../../../constants/colors'
+import { StyleSheet, Dimensions } from 'react-native'; // Importamos Dimensions
+import { colors } from '../../../../constants/colors';
+
+const windowWidth = Dimensions.get('window').width; // Obtenemos el ancho de la pantalla
 
 export default styles = StyleSheet.create({
-    cardContainer: {
-        backgroundColor: colors.secondary,
-        marginHorizontal: 30,
-        marginVertical: 10,
-        minWidth: 90,
-        width: '85%',
-        maxWidth:400,
-        height:50,
-        minHeight:30,
-        alignItems: 'center',
+    container: {
+        backgroundColor: 'white',
+        borderRadius: 8,
+        elevation: 3,
+        marginVertical: 8,
+        marginHorizontal: (windowWidth * 0.1) / 2, // El 10% de margen en ambos lados
+        width: windowWidth * 0.8, // Ancho del 80% de la pantalla
+        paddingVertical: 12,
+        paddingHorizontal: 16,
         justifyContent: 'center',
+        alignItems: 'center',
         shadowColor: 'black',
-
-    },
-    contentContainer: {
-        paddingLeft: 10,
-
-
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
     },
     text: {
-        fontFamily: 'PoppinsLightItalic',
-        fontSize: 20,
-        color: colors.tertiary,
-
+        fontFamily: 'PoppinsItalic',
+        fontSize: 16,
+        color: colors.primary,
     },
-})
+});

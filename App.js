@@ -1,7 +1,8 @@
-import BottomTabNavigator from './src/navigation/BottomTabNavigator'
+import MainNavigator from './src/navigation/MainNavigator'
 import { NavigationContainer } from '@react-navigation/native'
-import StackNavigator from './src/navigation/StackNavigator'
+import { Provider } from 'react-redux'
 import fonts from './src/global/fonts'
+import store from './src/store'
 import { useFonts } from 'expo-font'
 
 export default function App() {
@@ -12,8 +13,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
+    </Provider>
   )
 }
