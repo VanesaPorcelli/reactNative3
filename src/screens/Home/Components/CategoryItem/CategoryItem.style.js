@@ -21,7 +21,7 @@ export default styles = StyleSheet.create({
         shadowRadius: 3,
     },
     text: {
-        fontFamily: 'PoppinsItalic',
+        fontFamily: 'PoppinsLightItalic',
         fontSize: 16,
         color: colors.primary,
     },
