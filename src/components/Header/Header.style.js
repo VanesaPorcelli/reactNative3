@@ -6,6 +6,5 @@ export default styles = StyleSheet.create({
         fontSize: 40,
         fontFamily: 'PoppinsLight',
         alignSelf: 'center',
-        color: colors.primary,
     },
 })

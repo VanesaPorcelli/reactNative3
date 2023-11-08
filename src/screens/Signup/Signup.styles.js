@@ -1,6 +1,5 @@
-import { TouchableOpacity } from 'react-native';
-import { StyleSheet } from 'react-native'
-import { colors } from '../../constants/colors'
+import { StyleSheet } from 'react-native';
+import { colors } from '../../constants/colors';
 
 export default styles = StyleSheet.create({
     container: {
@@ -15,37 +14,35 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
     },
     inputEmail: {
-        width: '95%',
+        width: '90%',
         backgroundColor: colors.secondary,
-        height: 30,
+        height: 50,
         marginVertical: 15,
         paddingHorizontal: 10,
         borderRadius: 5,
     },
     inputPasswordContainer: {
-        width: '95%',
+        width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: colors.secondary,
-        height: 30,
-        marginVertical: 15,
+        height: 50,
+        marginVertical: 10,
         paddingHorizontal: 10,
         borderRadius: 5,
         justifyContent: 'flex-end',
     },
     inputPassword: {
         flex: 1,
-        height: '100%',
+        height: '90%',
     },
     showPasswordButton: {
-        flexDirection: 'row', // Para alinear el icono y el texto horizontalmente
         backgroundColor: colors.primary,
         paddingHorizontal: 20,
-        borderTopRightRadius: 5,
-        borderBottomRightRadius: 5,
-        height: 30, // Ajusta la altura de acuerdo al contenido
-        alignItems: 'center', // Centra verticalmente
-        justifyContent: 'center',
+        borderRadius: 5,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: "center",
     },
     showPasswordButtonText: {
         color: 'white',
@@ -63,4 +60,4 @@ export default styles = StyleSheet.create({
     loginButtonText: {
         color: 'white',
     },
-})
+});

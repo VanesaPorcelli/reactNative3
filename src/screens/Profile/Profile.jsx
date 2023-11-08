@@ -6,14 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setCameraImage } from "../../features/auth/authSlice";
 import styles from "./Profile.styles";
+import { usePostProfileImageMutation } from "../../services/shopApi";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const image = useSelector((state) => state.auth.imageCamera);
+  const { localId } = useSelector((state) => state.auth);
+  const [triggerSaveProfileImage, result] = usePostProfileImageMutation();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    //console.log(image)
-  }, [image]);
 
   const verifyCameraPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
@@ -35,19 +34,30 @@ const Profile = () => {
         quality: 0.4,
       });
       if (!result.canceled) {
-        console.log(result.assets);
-        setImage(`data:image/jpeg;base64,${result.assets[0].base64}`);
+
+        dispatch(
+          setCameraImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
+        );
       }
     }
   };
 
   const confirmImage = () => {
-    dispatch(setCameraImage(image));
+    triggerSaveProfileImage({ image, localId });
+    //(result)
   };
 
   return (
     <View style={styles.container}>
-      {image ? null : (
+      {image ? (
+        <Image
+          source={{
+            uri: image,
+          }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      ) : (
         <Image
           source={{
             uri: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -58,6 +68,15 @@ const Profile = () => {
       )}
       <Pressable style={styles.cameraButton} onPress={pickImage}>
         <Text>Tomar Foto de perfil</Text>
+      </Pressable>
+      <Pressable style={styles.cameraButton} onPress={confirmImage}>
+        <Text>Confirmar</Text>
+      </Pressable>
+      <Pressable
+        style={{ ...styles.cameraButton, marginTop: 20 }}
+        onPress={() => navigation.navigate("Location")}
+      >
+        <Text>Ir a mi ubiacion</Text>
       </Pressable>
     </View>
   );

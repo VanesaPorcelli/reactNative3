@@ -1,7 +1,7 @@
 import { FlatList, SafeAreaView, StatusBar, View } from "react-native";
 
-import { CategoryItem } from "./Components";
-import { Header } from "../../components";
+import { CategoryItem } from "./components/CategoryItem/CategoryItem";
+import { Header } from "../../components/Header/Header";
 import React from "react";
 import styles from "./Home.style";
 import { useGetCategoriesQuery } from "../../services/shopApi";

@@ -2,19 +2,14 @@ import { FlatList, Pressable, Text, View } from "react-native";
 import React, { useEffect } from "react";
 
 import CartItem from "./components/Cartitem";
-import dataCart from "../../data/dataCart";
 import styles from "./Cart.styles";
 import { usePostOrderMutation } from "../../services/shopApi";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.items);
-  const total = useSelector((state) => state.cart);
+  const total = useSelector((state) => state.cart.total);
   const [triggerPost, result] = usePostOrderMutation();
-
-  useEffect(() => {
-    console.log(total);
-  }, []);
 
   const renderItem = ({ item }) => <CartItem item={item} />;
 

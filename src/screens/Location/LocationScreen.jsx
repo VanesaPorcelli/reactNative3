@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
 import { MapPreview } from "../../components";
-import styles from "../Location/location.style";
+import styles from "./location.style";
 
 const LocationScreen = () => {
   const [location, setLocation] = useState({ latitude: "", longitude: "" });

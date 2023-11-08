@@ -1,11 +1,4 @@
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
 
 import React from "react";
 import { addItem } from "../../features/cart/cartSlice";
@@ -19,23 +12,21 @@ const Details = ({ route }) => {
   const handleAddToCart = () => {
     dispatch(addItem({ ...product, quantity: 1 }));
   };
-
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: product.images[0] }} />
-        </View>
-        <Text style={styles.title}>{product.title}</Text>
-        <Text style={styles.description}>{product.description}</Text>
-        <Text style={styles.price}>{`$ ${product.price}`}</Text>
-        <TouchableOpacity
-          style={styles.addToCartButton}
-          onPress={handleAddToCart}
-        >
-          <Text style={styles.addToCartButtonText}>Add to Cart</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={{ uri: product.images[0] }}
+          resizeMode="cover"
+        />
+      </View>
+      <Text style={styles.title}>{product.title}</Text>
+      <Text>{product.description}</Text>
+      <Text style={styles.price}>{`$ ${product.price}`}</Text>
+      <Pressable onPress={handleAddToCart}>
+        <Text>Add to cart</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };
